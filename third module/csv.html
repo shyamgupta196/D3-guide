@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://d3js.org/d3.v3.js"></script>
+
+</head>
+<body>
+    <script>
+
+        var h = 200;
+        var w = 400;
+        var padding = 2;
+        
+        var ds;
+        
+        var ds = ds.slice(0,10);
+        
+        
+        
+        function scatter(d){
+
+            var svg = d3.select('body').append('svg').attr({
+                width: w, height:h
+            });
+            var dots = svg.selectAll('circle').data(d).enter().append('circle')
+                        .attr({
+                            cx: function(d){
+                                return d.alcohol * padding;
+                            },
+                            cy: function(d){
+                                return d.pH * padding;
+                            },
+                            fill: 'steelblue',
+                            r : 0.5,
+                            'stroke-width':0.05,
+                            stroke: 'black'
+                        });    
+        };
+//  here we read a semi-colon seperated file using d3-dsv,
+        d3.dsv(';')('../dataset/winequality-red.csv', function(error, data){
+            if (error) {
+                console.log(error);
+            }else {
+                console.log(data);
+                ds = data;
+            }
+
+            scatter(ds);
+
+        });
+
+    </script>
+</body>
+</html>
