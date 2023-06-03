@@ -17,7 +17,7 @@
         
         var ds;
         
-        var ds = ds.slice(0,10);
+        // var ds = ds.slice(0,10);
         
         
         
@@ -25,20 +25,21 @@
 
             var svg = d3.select('body').append('svg').attr({
                 width: w, height:h
-            });
+            })
+            
+            console.log(d)
             var dots = svg.selectAll('circle').data(d).enter().append('circle')
-                        .attr({
-                            cx: function(d){
-                                return d.alcohol * padding;
-                            },
-                            cy: function(d){
-                                return d.pH * padding;
-                            },
-                            fill: 'steelblue',
-                            r : 0.5,
-                            'stroke-width':0.05,
-                            stroke: 'black'
-                        });    
+            .attr({
+                cx: function(){
+                    console.log((d.alcohol) + 25)
+                    return (d.alcohol * padding) + 25;
+                },
+                cy: function(){
+                    return (d.pH * padding )+ 25;
+                },
+                fill: 'steelblue',
+                r : 0.5,
+            });    
         };
 //  here we read a semi-colon seperated file using d3-dsv,
         d3.dsv(';')('../dataset/winequality-red.csv', function(error, data){

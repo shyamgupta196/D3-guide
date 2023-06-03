@@ -10,7 +10,7 @@ svg.selectAll('rect')
 .enter()
 .append('rect')
 .attr('x',function(d,i) { 
-    return i * 20; 
+    return i *20; 
 })
 .attr('y',function(d){
     return h- (d * 4);
