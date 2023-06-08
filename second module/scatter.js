@@ -71,7 +71,7 @@ var labels = svg.selectAll('text').data(monthlySales)
             .text(function(d) { return minmax(monthlySales,'sales',d.sales,'minmax')})
             .attr({
                 x: function(d){
-                    return d.month +10 ;
+                    return d.month + 10 ;
                 },
                 y: function(d){
                     return h-d.sales;

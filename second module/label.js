@@ -34,11 +34,10 @@ svg.selectAll('text').data(dataset)
 .text(function(d) {return d ;})
 .attr({
     "text-anchor": "middle",
-    x: function(d,i) { return i * (w/dataset.length)+ (w/dataset.length - padding) / 2;},
-    y: function(d) { return h - d + 14;},
-    'font-family':'sans-serif',
+    x: function(d,i) { return i * (w/dataset.length)+ (w/dataset.length) /2 ;},
+    y: function(d) { return h - d ;},
+    'font-family':'sans',
     'font-size':13,
-    fill: '#FFFFFF'
+    'font-weight':800,
+    fill: '#000000'
 })
-
-/
